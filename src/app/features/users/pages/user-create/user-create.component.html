@@ -1,0 +1,76 @@
+<mat-card>
+  <mat-card-title>Crear usuario</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <!-- Nombre -->
+      <mat-form-field appearance="outline" class="full">
+        <mat-label id="name-label">Nombre</mat-label>
+        <input
+          matInput
+          id="name"
+          formControlName="name"
+          aria-labelledby="name-label"
+          required
+          autocomplete="name"
+        />
+        <mat-error id="name-error" *ngIf="form.controls.name.hasError('required')">
+          Requerido
+        </mat-error>
+        <mat-error *ngIf="form.controls.name.hasError('minlength')">
+          Mínimo 3 caracteres
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Email -->
+      <mat-form-field appearance="outline" class="full">
+        <mat-label id="email-label">Email</mat-label>
+        <input
+          matInput
+          type="email"
+          id="email"
+          formControlName="email"
+          aria-labelledby="email-label"
+          required
+          autocomplete="email"
+        />
+        <mat-error *ngIf="form.controls.email.hasError('required')">Requerido</mat-error>
+        <mat-error *ngIf="form.controls.email.hasError('email')">Email inválido</mat-error>
+      </mat-form-field>
+
+      <!-- Teléfono -->
+      <mat-form-field appearance="outline" class="full">
+        <mat-label id="phone-label">Teléfono</mat-label>
+        <input
+          matInput
+          type="tel"
+          id="phone"
+          formControlName="phone"
+          aria-labelledby="phone-label"
+          required
+          autocomplete="tel"
+        />
+        <mat-error *ngIf="form.controls.phone.hasError('required')">Requerido</mat-error>
+      </mat-form-field>
+
+      <!-- Sitio web -->
+      <mat-form-field appearance="outline" class="full">
+        <mat-label id="website-label">Sitio web</mat-label>
+        <input
+          matInput
+          type="url"
+          id="website"
+          formControlName="website"
+          aria-labelledby="website-label"
+          required
+          autocomplete="url"
+        />
+        <mat-error *ngIf="form.controls.website.hasError('required')">Requerido</mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="submitting">
+        {{ submitting ? 'Enviando…' : 'Crear' }}
+      </button>
+      <button mat-button type="button" routerLink="/users">Cancelar</button>
+    </form>
+  </mat-card-content>
+</mat-card>

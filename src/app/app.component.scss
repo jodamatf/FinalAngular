@@ -1,0 +1,23 @@
+.container { 
+  padding: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: calc(100vh - 64px);
+}
+
+.spacer { 
+  flex: 1 1 auto; 
+}
+
+mat-toolbar {
+  a.active { 
+    text-decoration: underline;
+  }
+  
+  a {
+    margin-left: 8px;
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
+}

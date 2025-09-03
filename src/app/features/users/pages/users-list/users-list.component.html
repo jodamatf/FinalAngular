@@ -1,0 +1,51 @@
+<div class="header-section">
+  <h1>Usuarios</h1>
+  <button mat-raised-button color="primary" routerLink="/users/create">Crear usuario</button>
+</div>
+
+<ng-container *ngIf="!loading; else loadingTpl">
+  <div class="users-grid">
+    <mat-card *ngFor="let user of users" class="user-card">
+      <mat-card-header>
+        <div mat-card-avatar class="user-avatar">{{ user.name.charAt(0).toUpperCase() }}</div>
+        <mat-card-title>{{ user.name }}</mat-card-title>
+        <mat-card-subtitle>{{'@' + user.username }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="user-info">
+          <div class="info-item">
+            <mat-icon>email</mat-icon>
+            <span>{{ user.email }}</span>
+          </div>
+          <div class="info-item">
+            <mat-icon>phone</mat-icon>
+            <span>{{ user.phone }}</span>
+          </div>
+          <div class="info-item" *ngIf="user.website">
+            <mat-icon>language</mat-icon>
+            <span>{{ user.website }}</span>
+          </div>
+          <div class="info-item" *ngIf="user.address">
+            <mat-icon>location_on</mat-icon>
+            <span>{{ user.address.city }}, {{ user.address.street }}</span>
+          </div>
+          <div class="info-item" *ngIf="user.company">
+            <mat-icon>business</mat-icon>
+            <span>{{ user.company.name }}</span>
+          </div>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-button color="accent">Editar</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</ng-container>
+
+<ng-template #loadingTpl>
+  <div class="center">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+</ng-template>
