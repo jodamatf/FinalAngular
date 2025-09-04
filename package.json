@@ -5,6 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --configuration production --base-href /FinalAngular/",
+    "deploy": "gh-pages -d dist/final-users/browser",
+    "build-and-deploy": "npm run build:prod && npm run deploy",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
